@@ -60,3 +60,4 @@
 /Users/marcohernandez/Desktop/IUPUI/Spring2024/ASP_Programming/Projects/cs12dotnet8/finalproject/SupplierManagementAPI/obj/Debug/net8.0/SupplierManagementAPI.pdb
 /Users/marcohernandez/Desktop/IUPUI/Spring2024/ASP_Programming/Projects/cs12dotnet8/finalproject/SupplierManagementAPI/obj/Debug/net8.0/SupplierManagementAPI.genruntimeconfig.cache
 /Users/marcohernandez/Desktop/IUPUI/Spring2024/ASP_Programming/Projects/cs12dotnet8/finalproject/SupplierManagementAPI/obj/Debug/net8.0/ref/SupplierManagementAPI.dll
+/Users/marcohernandez/Desktop/IUPUI/Spring2024/ASP_Programming/Projects/cs12dotnet8/finalproject/SupplierManagementAPI/obj/Debug/net8.0/SupplierManagementAPI.sourcelink.json

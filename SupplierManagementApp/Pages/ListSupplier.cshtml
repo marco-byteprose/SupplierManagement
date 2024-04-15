@@ -1,0 +1,37 @@
+@page
+@model ListSupplierModel
+
+<h2>List of Suppliers</h2>
+<p>Number of suppliers: @Model.Suppliers.Count()</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Supplier ID</th>
+            <th>Company Name</th>
+            <th>Contact Name</th>
+            <th>Contact Title</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model.Suppliers)
+        {
+            <tr>
+                <td>@supplier.SupplierId</td>
+                <td>@supplier.CompanyName</td>
+                <td>@supplier.ContactName</td>
+                <td>@supplier.ContactTitle</td>
+                <td>@supplier.Address</td>
+                <td>@supplier.City</td>
+                <td>@supplier.PostalCode</td>
+                <td>@supplier.Country</td>
+                <td>@supplier.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>
