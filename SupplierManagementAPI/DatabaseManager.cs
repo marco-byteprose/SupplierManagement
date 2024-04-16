@@ -38,6 +38,72 @@ public class DatabaseManager
         return suppliers;
     }
 
+    public static Supplier GetSupplierById(int supplierId)
+    {
+        Supplier supplier = null;
+        string connectionString = "Data Source=Northwind.db";
+
+        using (var connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = 
+                @"SELECT SupplierId, CompanyName, ContactName, ContactTitle, Address, City, PostalCode, Country, Phone
+                  FROM Suppliers
+                  WHERE SupplierId = @SupplierId;";
+            command.Parameters.AddWithValue("@SupplierId", supplierId);
+
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    supplier = new Supplier
+                    {
+                        SupplierId = Convert.ToInt32(reader["SupplierId"]),
+                        CompanyName = reader["CompanyName"].ToString(),
+                        ContactName = reader["ContactName"].ToString(),
+                        ContactTitle = reader["ContactTitle"].ToString(),
+                        Address = reader["Address"].ToString(),
+                        City = reader["City"].ToString(),
+                        PostalCode = reader["PostalCode"].ToString(),
+                        Country = reader["Country"].ToString(),
+                        Phone = reader["Phone"].ToString(),
+                        Products = new List<Product>()
+                    };
+                }
+            }
+
+            // Retrieve products if supplierId found
+            if (supplier != null)
+            {
+                command.Parameters.Clear();
+                command.CommandText = 
+                    @"SELECT ProductId, ProductName, CategoryId, QuantityPerUnit, UnitPrice, UnitsInStock
+                      FROM Products
+                      WHERE SupplierId = @SupplierId;";
+                command.Parameters.AddWithValue("@SupplierId", supplierId);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var product = new Product
+                        {
+                            ProductId = Convert.ToInt32(reader["ProductId"]),
+                            ProductName = reader["ProductName"].ToString(),
+                            CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                            QuantityPerUnit = reader["QuantityPerUnit"].ToString(),
+                            UnitPrice = Convert.ToDecimal(reader["UnitPrice"]),
+                            UnitsInStock = Convert.ToInt32(reader["UnitsInStock"])
+                        };
+                        supplier.Products.Add(product);
+                    }
+                }
+            }
+        }
+        return supplier;
+    }
+
     public static void CreateSupplier(Supplier supplier)
     {
         string connectionString = "Data Source=Northwind.db";

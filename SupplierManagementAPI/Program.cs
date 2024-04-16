@@ -23,6 +23,11 @@ app.MapGet("/Suppliers", () =>
 })
 .WithName("GetSuppliers");
 
+app.MapGet("/Suppliers/{id:int}", (int id) => 
+{
+    return DatabaseManager.GetSupplierById(id);
+}).WithName("GetSupplierById");
+
 app.MapGet("/Products", () =>
 {
     return DatabaseManager.GetProducts();
