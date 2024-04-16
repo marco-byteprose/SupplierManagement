@@ -22,7 +22,7 @@
         @foreach (var supplier in Model.Suppliers)
         {
             <tr>
-                <td>@supplier.SupplierId</td>
+                <td><a href="/SupplierDetails/@supplier.SupplierId">@supplier.SupplierId</a></td>
                 <td>@supplier.CompanyName</td>
                 <td>@supplier.ContactName</td>
                 <td>@supplier.ContactTitle</td>

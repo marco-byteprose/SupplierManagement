@@ -22,5 +22,14 @@ namespace SupplierManagementApp.Services
             var stream = await response.Content.ReadAsStreamAsync();
             return await JsonSerializer.DeserializeAsync<IEnumerable<Supplier>>(stream);
         }
+
+        public async Task<Supplier> GetSupplierById(int id)
+        {
+            Console.WriteLine("Entered GetSupplierById - SupplierManager");
+            var response = await _client.GetAsync($"http://localhost:5135/Suppliers/{id}");
+            response.EnsureSuccessStatusCode();
+            var stream = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<Supplier>(stream);
+        }
     }
 }

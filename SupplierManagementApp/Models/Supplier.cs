@@ -30,5 +30,8 @@ namespace SupplierManagementApp.Models
 
         [JsonPropertyName("phone")]
         public string Phone { get; set;}
+        
+        [JsonPropertyName("products")]
+        public List<Product>? Products { get; set;}
     }
 }
