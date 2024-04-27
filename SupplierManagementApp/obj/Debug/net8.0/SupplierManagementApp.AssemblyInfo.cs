@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SupplierManagementApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee4aca55763f3e26fb8f6324e1faf929d98bee4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed29c906f2ffadccd21cae5de30b1117249dc69b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SupplierManagementApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SupplierManagementApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

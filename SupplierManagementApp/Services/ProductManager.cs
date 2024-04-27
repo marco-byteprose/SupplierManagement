@@ -22,5 +22,21 @@ namespace SupplierManagementApp.Services
             var stream = await response.Content.ReadAsStreamAsync();
             return await JsonSerializer.DeserializeAsync<IEnumerable<Product>>(stream);
         }
+
+        public async Task SaveProductInfo(Product product)
+        {
+            try
+            {
+                var json = JsonSerializer.Serialize(product);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                var response = await _client.PostAsync("http://localhost:5135/Products", content);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error saving product information: {ex.Message}");
+                throw new Exception("Failed to save product information. Please try again.");
+            }
+        }
     }
 }

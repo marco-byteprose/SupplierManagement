@@ -13,7 +13,7 @@ public class SupplierDetailsModel : PageModel
     {
         _supplierManager = supplierManager;
     }
-
+    [BindProperty]
     public Supplier Supplier { get; set; }
 
     public async Task<IActionResult> OnGet(int id)
@@ -28,4 +28,25 @@ public class SupplierDetailsModel : PageModel
             return RedirectToPage("/Error");
         }
     }
+
+    public async Task<IActionResult> OnPost()
+    {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        try
+        {
+            await _supplierManager.UpdateSupplier(Supplier);
+            return RedirectToPage("/SupplierDetails", new { id = Supplier.SupplierId });
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"Error occurred: {ex.Message}");
+            return RedirectToPage("/Error");
+        }
+    }
+
+
 }
